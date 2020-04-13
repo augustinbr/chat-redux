@@ -1,0 +1,24 @@
+body {
+  font-family: Helvetica;
+}
+.app {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-areas:
+    "channel message";
+}
+
+.channels__list {
+  grid-area: channel;
+  background-color: #ff5722;
+}
+
+.messages__list {
+  grid-area: message;
+  background-color: #b2ebf2;
+}
+
