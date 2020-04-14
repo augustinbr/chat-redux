@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
+import thunk from 'redux-thunk';
+import promise from 'redux-promise';
 
 // internal modules
 import App from './components/app';
@@ -15,11 +17,10 @@ import currentUsernameReducer from './reducers/current-username-reducer';
 
 // import actions
 
-import { initialState } from './actions';
 
 // State and reducers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middlewares = composeEnhancers(applyMiddleware(logger));
+const middlewares = composeEnhancers(applyMiddleware(logger, thunk, promise));
 
 const reducers = combineReducers({
   messages: messagesListReducer,

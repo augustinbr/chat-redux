@@ -3,22 +3,30 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
-import { listChannels } from '../actions';
+import { listChannels, selectChannel } from '../actions/index';
+
 // import City from '../containers/city';
 
 
 class ListChannels extends Component {
-
   componentWillMount() {
-    this.props.listChannels();
+    console.log(this.props.selectChannel("general"));
+  }
+
+  handleClick = (event) => {
+    console.log(event);
+    console.log(this.props.selectChannel(event.target.value));
   }
 
   render() {
     return (
-      <div className="channels__list" key={channel}>
+      <div className="channels__list list" >
+        <h2>Redux Chat</h2>
         {this.props.channelsList.map((channel) => {
           return (
-            <h2>{channel}</h2>
+            <div className="list" key={channel} onClick={this.handleClick}>
+              <h4 >{channel}</h4>
+            </div>
           );
         })
         }
@@ -29,14 +37,17 @@ class ListChannels extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { listChannels: listChannels },
-    dispatch
+    {
+      listChannels,
+      selectChannel
+    }, dispatch
   );
 }
 
 function mapStateToProps(state) {
   return {
-    channelsList: state.channels
+    channelsList: state.channels,
+    selectedChannel: state.selectedChannel
   };
 }
 

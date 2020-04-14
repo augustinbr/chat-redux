@@ -1,13 +1,13 @@
-import { selectChannel, SELECT_CHANNEL } from '../actions';
+import { SELECT_CHANNEL } from '../actions/index';
 
 
-export default function (state, action) {
-  if (state === undefined) {
-    return [];
+export default function(state = null, action) {
+  switch (action.type) {
+    case SELECT_CHANNEL: {
+      return action.payload;
+    }
+    default: {
+      return state;
+    }
   }
-
-  if (action.type === SELECT_CHANNEL) {
-    return action.payload;
-  }
-  return state;
 }

@@ -7,7 +7,7 @@ body {
   padding-left: 20px;
   height: 100vh;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 20% 80%;
   grid-template-areas:
     "channel message";
 }
@@ -22,3 +22,17 @@ body {
   background-color: #b2ebf2;
 }
 
+.message {
+  background-color: white;
+}
+
+.list {
+  padding: 10px 15px;
+}
+
+.channel {
+  padding: 10px 15px;
+  padding: 10px 15px;
+  border-bottom: solid 2px black;
+  background-color: white;
+}

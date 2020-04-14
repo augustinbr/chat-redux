@@ -6,17 +6,42 @@ const initialState = {
   selectedChannel: 'general'
 };
 
-export default initialState;
 
-const MESSAGE = 'MESSAGE';
-const SET_CHANNELS = 'SET_CHANNELS';
-const SET_USER = 'SET_USER';
-const SELECT_CHANNEL = 'SELECT_CHANNEL';
+export const FETCH_MESSAGES = 'FETCH_MESSAGES';
+export const FETCH_PENDING = 'FETCH_PENDING';
+export const FETCH_MESSAGES_ERROR = 'FETCH_MESSAGES_ERROR';
 
-export function setMessages(messages) {
+export const SET_CHANNELS = 'SET_CHANNELS';
+export const SET_USER = 'SET_USER';
+export const SELECT_CHANNEL = 'SELECT_CHANNEL';
+
+export function selectChannel(selectedChannel) {
   return {
-    type: MESSAGE,
+    type: SELECT_CHANNEL,
+    payload: selectedChannel
+  };
+}
+
+export function fetchMessagesPending() {
+  return {
+    type: FETCH_PENDING
+  };
+}
+
+
+export function fetchMessagesSuccess(messages) {
+  return {
+    type: FETCH_MESSAGES,
     payload: messages
+
+  };
+}
+
+export function fetchMessagesError(error) {
+  return {
+    type: FETCH_MESSAGES_ERROR,
+    error
+
   };
 }
 
@@ -34,9 +59,3 @@ export function setUser() {
   };
 }
 
-export function selectChannel() {
-  return {
-    type: SELECT_CHANNEL,
-    payload: initialState.selectedChannel
-  };
-}
