@@ -1,9 +1,9 @@
-import { SELECT_CHANNEL } from '../actions/index';
 
+import { CHANNEL_SELECTED } from '../actions';
 
 export default function(state = null, action) {
   switch (action.type) {
-    case SELECT_CHANNEL: {
+    case CHANNEL_SELECTED: {
       return action.payload;
     }
     default: {
